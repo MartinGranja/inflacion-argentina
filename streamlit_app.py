@@ -5,14 +5,6 @@ import altair as alt
 
 st.set_page_config(page_title="Inflación en Argentina — INDEC", layout="wide")
 st.title("Inflación en Argentina — INDEC (2016–actual)")
-
-st.markdown("""
-**Objetivo:** Visualizar la evolución del IPC y su composición por **divisiones** y **regiones**.  
-**Flujo:** Selección → Limpieza mínima → Transformación (tasas) → Visualización → Interpretación.  
-**Fuente:** INDEC (CSV mensual por divisiones y regiones).
-""")
-
-# ---- SIDEBAR: CARGA DE DATOS ----
 st.sidebar.header("1) Cargar CSV del IPC (INDEC)")
 modo = st.sidebar.radio("¿Cómo cargar?", ["Subir CSV", "Pegar URL CSV"])
 
@@ -36,7 +28,7 @@ if df_ipc is None:
 df = df_ipc.copy()
 
 st.sidebar.header("2) Elegir columnas")
-# Intentos de auto-detección
+
 def pick(colnames, patrones):
     for p in patrones:
         for c in colnames:
@@ -49,13 +41,11 @@ col_region  = pick(df.columns, ["region", "región"])
 col_div     = pick(df.columns, ["division", "división", "capitulo", "capítulo", "categoria", "categoría"])
 col_valor   = pick(df.columns, ["indice", "índice", "nivel", "valor", "ipc", "variacion", "variación"])
 
-# Si no se encontró, te dejo elegir manualmente
 if col_fecha  is None: col_fecha  = st.sidebar.selectbox("Columna de fecha/mes", df.columns)
 if col_region is None: col_region = st.sidebar.selectbox("Columna de región", df.columns)
 if col_div    is None: col_div    = st.sidebar.selectbox("Columna de división/categoría", df.columns)
 if col_valor  is None: col_valor  = st.sidebar.selectbox("Columna de índice/valor", df.columns)
 
-# ---- PREPROCESAMIENTO ----
 df[col_fecha] = pd.to_datetime(df[col_fecha], errors="coerce")
 df = df.dropna(subset=[col_fecha])
 df = df.sort_values([col_region, col_div, col_fecha])
@@ -129,5 +119,3 @@ with tab3:
               ).properties(height=360))
     st.altair_chart(heat, use_container_width=True)
 
-st.markdown("---")
-st.caption("Nota: Este dashboard es descriptivo. No incluye modelos predictivos.")
