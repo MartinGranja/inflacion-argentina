@@ -1,0 +1,82 @@
+fecha,region,division,valor
+2016-01-01,GBA,Alimentos y bebidas,120.3
+2016-01-01,GBA,Vivienda y servicios,98.1
+2016-01-01,GBA,Transporte,105.2
+2016-02-01,GBA,Alimentos y bebidas,125.4
+2016-02-01,GBA,Vivienda y servicios,99.8
+2016-02-01,GBA,Transporte,108.6
+2016-03-01,GBA,Alimentos y bebidas,130.1
+2016-03-01,GBA,Vivienda y servicios,102.2
+2016-03-01,GBA,Transporte,110.3
+2017-01-01,GBA,Alimentos y bebidas,145.9
+2017-01-01,GBA,Vivienda y servicios,112.0
+2017-01-01,GBA,Transporte,119.5
+2017-02-01,GBA,Alimentos y bebidas,150.6
+2017-02-01,GBA,Vivienda y servicios,115.3
+2017-02-01,GBA,Transporte,122.1
+2017-03-01,GBA,Alimentos y bebidas,155.8
+2017-03-01,GBA,Vivienda y servicios,118.7
+2017-03-01,GBA,Transporte,125.9
+2018-01-01,GBA,Alimentos y bebidas,180.4
+2018-01-01,GBA,Vivienda y servicios,130.5
+2018-01-01,GBA,Transporte,140.2
+2018-02-01,GBA,Alimentos y bebidas,185.1
+2018-02-01,GBA,Vivienda y servicios,132.9
+2018-02-01,GBA,Transporte,142.7
+2018-03-01,GBA,Alimentos y bebidas,189.3
+2018-03-01,GBA,Vivienda y servicios,135.2
+2018-03-01,GBA,Transporte,146.1
+2019-01-01,GBA,Alimentos y bebidas,220.7
+2019-01-01,GBA,Vivienda y servicios,150.8
+2019-01-01,GBA,Transporte,165.3
+2019-02-01,GBA,Alimentos y bebidas,226.4
+2019-02-01,GBA,Vivienda y servicios,153.9
+2019-02-01,GBA,Transporte,168.7
+2019-03-01,GBA,Alimentos y bebidas,232.9
+2019-03-01,GBA,Vivienda y servicios,158.3
+2019-03-01,GBA,Transporte,172.5
+2020-01-01,GBA,Alimentos y bebidas,260.1
+2020-01-01,GBA,Vivienda y servicios,170.4
+2020-01-01,GBA,Transporte,185.7
+2020-02-01,GBA,Alimentos y bebidas,265.9
+2020-02-01,GBA,Vivienda y servicios,173.8
+2020-02-01,GBA,Transporte,188.3
+2020-03-01,GBA,Alimentos y bebidas,271.2
+2020-03-01,GBA,Vivienda y servicios,176.1
+2020-03-01,GBA,Transporte,191.4
+2021-01-01,GBA,Alimentos y bebidas,310.5
+2021-01-01,GBA,Vivienda y servicios,198.2
+2021-01-01,GBA,Transporte,215.9
+2021-02-01,GBA,Alimentos y bebidas,316.2
+2021-02-01,GBA,Vivienda y servicios,201.5
+2021-02-01,GBA,Transporte,219.7
+2021-03-01,GBA,Alimentos y bebidas,322.8
+2021-03-01,GBA,Vivienda y servicios,204.3
+2021-03-01,GBA,Transporte,223.8
+2022-01-01,GBA,Alimentos y bebidas,380.1
+2022-01-01,GBA,Vivienda y servicios,245.7
+2022-01-01,GBA,Transporte,270.6
+2022-02-01,GBA,Alimentos y bebidas,389.4
+2022-02-01,GBA,Vivienda y servicios,249.8
+2022-02-01,GBA,Transporte,276.1
+2022-03-01,GBA,Alimentos y bebidas,398.2
+2022-03-01,GBA,Vivienda y servicios,253.9
+2022-03-01,GBA,Transporte,281.7
+2023-01-01,GBA,Alimentos y bebidas,520.4
+2023-01-01,GBA,Vivienda y servicios,320.2
+2023-01-01,GBA,Transporte,350.9
+2023-02-01,GBA,Alimentos y bebidas,533.1
+2023-02-01,GBA,Vivienda y servicios,328.7
+2023-02-01,GBA,Transporte,359.4
+2023-03-01,GBA,Alimentos y bebidas,547.8
+2023-03-01,GBA,Vivienda y servicios,336.1
+2023-03-01,GBA,Transporte,366.6
+2024-01-01,GBA,Alimentos y bebidas,840.3
+2024-01-01,GBA,Vivienda y servicios,500.2
+2024-01-01,GBA,Transporte,550.7
+2024-02-01,GBA,Alimentos y bebidas,870.8
+2024-02-01,GBA,Vivienda y servicios,515.9
+2024-02-01,GBA,Transporte,565.3
+2024-03-01,GBA,Alimentos y bebidas,905.2
+2024-03-01,GBA,Vivienda y servicios,530.4
+2024-03-01,GBA,Transporte,580.1
