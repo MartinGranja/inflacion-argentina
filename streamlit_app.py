@@ -68,7 +68,7 @@ region_sel = st.sidebar.multiselect("Región (para comparar)", regiones, default
 meses = sorted(df["mes_label"].unique().tolist())
 mes_ref = st.sidebar.selectbox("Mes de referencia (para barras/heatmap)", meses, index=len(meses)-1)
 
-tab1, tab2, tab3 = st.tabs(["Exploración (línea)", "Divisiones (barras)", "Mapa de calor"])
+tab1, tab2, tab3, tab4 = st.tabs(["Exploración (línea)", "Divisiones (barras)", "Mapa de calor", "Series temporales (suavizado)"])
 
 with tab1:
     st.subheader("Evolución interanual del IPC (%)")
@@ -118,4 +118,57 @@ with tab3:
                   tooltip=[col_region, col_div, "var_interanual_%"]
               ).properties(height=360))
     st.altair_chart(heat, use_container_width=True)
+
+with tab4:
+    st.subheader("Series temporales: media móvil y suavizado exponencial")
+    st.write("Esta sección aplica técnicas simples de series temporales para observar tendencia y reducir ruido.")
+
+    # Tomamos la misma serie 'general' usada en tab1 (por región y fecha)
+    df_ts = df_general.copy()
+
+    # Seguridad: ordenar por fecha
+    df_ts = df_ts.sort_values([col_region, col_fecha])
+
+    # Controles simples (en el panel lateral o acá; lo dejamos acá para no cargar la sidebar)
+    ventana = st.selectbox("Ventana de media móvil (meses)", [3, 6, 12], index=1)
+    alpha = st.slider("Alpha (suavizado exponencial)", 0.05, 0.95, 0.30, 0.05)
+
+    # Calculamos suavizados por región (cada región su propia serie)
+    df_ts["media_movil"] = df_ts.groupby(col_region)["var_interanual_%"].transform(
+        lambda s: s.rolling(window=ventana, min_periods=1).mean()
+    )
+    df_ts["suav_exp"] = df_ts.groupby(col_region)["var_interanual_%"].transform(
+        lambda s: s.ewm(alpha=alpha, adjust=False).mean()
+    )
+
+    # Pasamos a formato largo para graficar 3 líneas en 1 chart
+    df_plot = df_ts[[col_fecha, col_region, "var_interanual_%", "media_movil", "suav_exp"]].copy()
+    df_plot = df_plot.rename(columns={
+        "var_interanual_%": "Original",
+        "media_movil": f"Media móvil ({ventana})",
+        "suav_exp": f"Suavizado exp (α={alpha:.2f})"
+    })
+
+    df_long = df_plot.melt(id_vars=[col_fecha, col_region], var_name="Serie", value_name="Valor")
+
+    chart_ts = (
+        alt.Chart(df_long)
+        .mark_line()
+        .encode(
+            x=alt.X(f"{col_fecha}:T", title="Fecha"),
+            y=alt.Y("Valor:Q", title="Inflación interanual (%)"),
+            color=alt.Color("Serie:N", title="Serie"),
+            strokeDash=alt.StrokeDash("Serie:N", title="Serie"),
+            tooltip=[col_fecha, col_region, "Serie", "Valor"]
+        )
+        .facet(
+            row=alt.Row(f"{col_region}:N", title="Región")
+        )
+        .properties(height=160)
+    )
+
+    st.altair_chart(chart_ts, use_container_width=True)
+
+    st.markdown("**Interpretación rápida:** la media móvil suaviza picos y muestra tendencia; el suavizado exponencial responde más rápido a cambios recientes.")
+
 
