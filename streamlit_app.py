@@ -152,20 +152,19 @@ with tab4:
     df_long = df_plot.melt(id_vars=[col_fecha, col_region], var_name="Serie", value_name="Valor")
 
     chart_ts = (
-        alt.Chart(df_long)
-        .mark_line()
-        .encode(
-            x=alt.X(f"{col_fecha}:T", title="Fecha"),
-            y=alt.Y("Valor:Q", title="Inflación interanual (%)"),
-            color=alt.Color("Serie:N", title="Serie"),
-            strokeDash=alt.StrokeDash("Serie:N", title="Serie"),
-            tooltip=[col_fecha, col_region, "Serie", "Valor"]
-        )
-        .facet(
-            row=alt.Row(f"{col_region}:N", title="Región")
-        )
-        .properties(height=160)
+    alt.Chart(df_long)
+    .mark_line()
+    .encode(
+        x=alt.X(f"{col_fecha}:T", title="Fecha"),
+        y=alt.Y("Valor:Q", title="Inflación interanual (%)"),
+        color=alt.Color("Serie:N", title="Serie"),
+        tooltip=[col_fecha, col_region, "Serie", "Valor"]
     )
+    .facet(
+        row=alt.Row(f"{col_region}:N", title="Región")
+    )
+    .properties(height=160)
+)
 
     st.altair_chart(chart_ts, use_container_width=True)
 
